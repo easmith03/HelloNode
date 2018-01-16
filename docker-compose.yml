@@ -1,0 +1,23 @@
+version: '3'
+
+networks:
+  hellonet:
+
+services:
+  hello:
+    image: eric/hello
+    ports:
+    - "3000:3000"
+    networks:
+    - hellonet
+  mongo:  
+    image: mongo:latest
+    volumes:
+    - mongodata:/data/db
+    ports:
+    - "27017:27017"
+    networks:
+    - hellonet
+
+volumes:
+  mongodata:    
