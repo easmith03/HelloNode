@@ -5,11 +5,13 @@ networks:
 
 services:
   hello:
-    image: eric/hello
+    image: eric/hellonode
     ports:
     - "3000:3000"
     networks:
     - hellonet
+    environment:
+    - MONGO_URL=mongodb://mongo:27017/mydb 
   mongo:  
     image: mongo:latest
     volumes:
@@ -18,8 +20,6 @@ services:
     - "27017:27017"
     networks:
     - hellonet
-    environment:
-     - MongoDbUrl=mongodb://mongo:27017/mydb
     
 volumes:
   mongodata:    

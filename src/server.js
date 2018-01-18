@@ -5,13 +5,13 @@ var app = express();
 const mongo = require('mongodb');
 const ObjectID = require('mongodb').ObjectID;
 const MongoClient = require('mongodb').MongoClient;
-const url = process.env.MongoDbUrl || "mongodb://localhost:27017/mydb";
+const url = process.env.MONGO_URL || "mongodb://localhost:27017/mydb";
 let dbConnection;
 let dbase;
 
+console.log("MongoDB URL:", process.env.MONGO_URL);
 
 app.get('/', function (req, res) {
-  //res.send(`Hello World!!!!!!! ?echo=${req.query.echo}` );
 	saveEcho(req.query.echo, req, res);
 });
 
