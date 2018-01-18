@@ -5,7 +5,7 @@ var app = express();
 const mongo = require('mongodb');
 const ObjectID = require('mongodb').ObjectID;
 const MongoClient = require('mongodb').MongoClient;
-const url = "mongodb://mongo:27017/mydb";
+const url = process.env.MongoDbUrl || "mongodb://localhost:27017/mydb";
 let dbConnection;
 let dbase;
 
@@ -69,9 +69,6 @@ dbinit = function () {
 dbclose = function () {
     return dbConnection.close();
 }
-
-
-
 
 module.exports.insertOne = function (document) {
     return dbase.collection("thing").insertOne(document);    

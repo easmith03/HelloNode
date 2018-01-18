@@ -18,6 +18,8 @@ services:
     - "27017:27017"
     networks:
     - hellonet
-
+    environment:
+     - MongoDbUrl=mongodb://mongo:27017/mydb
+    
 volumes:
   mongodata:    
